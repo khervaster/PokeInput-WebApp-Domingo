@@ -1,0 +1,71 @@
+<form [formGroup]="pokemonForm" (ngSubmit)="onSubmit()">
+  <div class="form-grid">
+    <div class="field-group">
+      <label>Pokemon Name</label>
+      <input formControlName="name" placeholder="e.g. Typhlosion" />
+    </div>
+
+    <div class="field-group">
+      <label>Type</label>
+      <input formControlName="type" placeholder="e.g. Fire" />
+    </div>
+
+    <div class="field-group">
+      <label>Nature</label>
+      <input formControlName="nature" placeholder="e.g. Timid" />
+    </div>
+
+    <div class="field-group">
+      <div class="level-header">
+        <label>Level</label>
+        <div class="quick-add-buttons">
+          <button type="button" class="btn-quick" (click)="addLevel(1)">+1</button>
+          <button type="button" class="btn-quick" (click)="addLevel(5)">+5</button>
+          <button type="button" class="btn-quick" (click)="addLevel(10)">+10</button>
+          <button type="button" class="btn-quick" (click)="addLevel(25)">+25</button>
+        </div>
+      </div>
+      <div class="level-input-control">
+        <input type="number" formControlName="level" placeholder="Level" min="1" />
+        <div class="stepper-right">
+          <button type="button" class="btn-step" (click)="addLevel(-1)">−</button>
+          <button type="button" class="btn-step" (click)="addLevel(1)">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn-submit" [disabled]="!pokemonForm.valid">
+      {{ editingId() ? 'Update Pokemon' : 'Add to Pokedex' }}
+    </button>
+
+    @if (editingId()) {
+      <button type="button" class="btn-cancel" (click)="onCancelEdit()">Cancel</button>
+    }
+  </div>
+</form>
+
+<div class="section-title">
+  <span class="pokeball-icon"></span>
+  <h2>Gary's Winning Team</h2>
+</div>
+
+<div class="card-grid">
+  @for (p of pokemonService.pokemonList(); track p._id) {
+    <div class="card">
+      <div class="card-header">
+        <h3>{{ p.name }}</h3>
+        <span class="lvl-badge">Lvl {{ p.level }}</span>
+      </div>
+      <p class="card-details">{{ p.type }} • {{ p.nature }}</p>
+
+      <div class="card-actions">
+        <button type="button" class="btn-card-edit" (click)="onEdit(p)">Edit</button>
+        <button type="button" class="btn-card-delete" (click)="onDelete(p._id)">Delete</button>
+      </div>
+    </div>
+  } @empty {
+    <p class="empty-state">No Pokemon recorded in team.</p>
+  }
+</div>

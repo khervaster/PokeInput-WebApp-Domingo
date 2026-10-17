@@ -1,0 +1,336 @@
+:host {
+  display: block;
+  max-width: 80%; /* Expands layout wide across the screen */
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 2rem;   /* Generous side margins */
+  box-sizing: border-box;
+}
+
+/* --- Form Container --- */
+form {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  border-top: 5px solid var(--poke-red);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 0 auto 2.5rem auto; /* Centers the form */
+  max-width: 35%;           /* Prevents form from stretching too wide */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* --- Flex Layout for Form Fields --- */
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1 1 220px; /* Fits comfortably in 2 columns inside 650px */
+}
+
+.field-group label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+form input {
+  padding: 0.65rem 0.85rem;
+  font-size: 0.95rem;
+  border: 1px solid var(--border-color);
+  border-radius: calc(var(--radius) - 4px);
+  background-color: #fafafa;
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+form input:focus {
+  border-color: var(--poke-accent);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(59, 76, 202, 0.12);
+}
+
+/* --- Level Header & Quick Buttons --- */
+.level-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quick-add-buttons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.btn-quick {
+  background-color: #eef2ff;
+  color: var(--poke-accent);
+  border: 1px solid #c7d2fe;
+  font-size: 0.725rem;
+  font-weight: 700;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-quick:hover {
+  background-color: var(--poke-accent);
+  color: #ffffff;
+  border-color: var(--poke-accent);
+}
+
+/* --- Level Input Container with Right-Aligned Controls --- */
+.level-input-control {
+  display: flex;
+  align-items: stretch;
+  background-color: #fafafa;
+  border: 1px solid var(--border-color);
+  border-radius: calc(var(--radius) - 4px);
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.level-input-control:focus-within {
+  border-color: var(--poke-accent);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(59, 76, 202, 0.12);
+}
+
+.level-input-control input {
+  border: none !important;
+  background: transparent !important;
+  font-weight: 600;
+  box-shadow: none !important;
+  padding: 0.65rem 0.85rem;
+  width: 100%;
+}
+
+.stepper-right {
+  display: flex;
+  align-items: stretch;
+  border-left: 1px solid var(--border-color);
+  background-color: #eef2ff;
+  flex-shrink: 0;
+}
+
+.btn-step {
+  background-color: transparent;
+  color: var(--poke-accent);
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  width: 36px;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.btn-step:first-child {
+  border-right: 1px solid var(--border-color);
+}
+
+.btn-step:hover {
+  background-color: var(--poke-accent);
+  color: #ffffff;
+}
+
+.btn-step:active {
+  transform: scale(0.95);
+}
+
+/* --- Submit Button --- */
+.btn-submit {
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: var(--poke-red);
+  border: none;
+  border-radius: calc(var(--radius) - 4px);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: var(--poke-red-hover);
+}
+
+.btn-submit:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* --- Section Heading --- */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.pokeball-icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, var(--poke-red) 50%, #ffffff 50%);
+  border: 2px solid var(--poke-dark);
+  display: inline-block;
+}
+
+h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--poke-dark);
+}
+
+/* --- Flex Layout for Pokemon Cards --- */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.card {
+  background-color: var(--card-bg);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+  flex: 1 1 240px; /* Expands dynamically to fill wide rows */
+  box-sizing: border-box;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--poke-dark);
+}
+
+.lvl-badge {
+  background-color: #fef2f2;
+  color: var(--poke-red);
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  border: 1px solid #fecaca;
+}
+
+.card-details {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: capitalize;
+}
+
+.empty-state {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* --- Hide Browser Spinner Controls --- */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/* --- Form Actions --- */
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-cancel {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background-color: #e2e8f0;
+  border: none;
+  border-radius: calc(var(--radius) - 4px);
+  cursor: pointer;
+}
+
+/* --- Card Action Buttons --- */
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.btn-card-edit,
+.btn-card-delete {
+  flex: 1;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s ease;
+}
+
+.btn-card-edit {
+  background-color: #eef2ff;
+  color: var(--poke-accent);
+  border: 1px solid #c7d2fe;
+}
+
+.btn-card-edit:hover {
+  background-color: var(--poke-accent);
+  color: #ffffff;
+}
+
+.btn-card-delete {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.btn-card-delete:hover {
+  background-color: #dc2626;
+  color: #ffffff;
+}
